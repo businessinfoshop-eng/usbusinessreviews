@@ -1050,6 +1050,86 @@ img { max-width: 100%; display: block; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 
+/* Marquee — horizontal scrolling reviews */
+.marquee-section {
+  padding: 32px 0 56px;
+  background: var(--color-bg-cream);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee-scroll 90s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-card {
+  flex-shrink: 0;
+  width: 320px;
+  background: var(--color-bg-paper);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all var(--transition);
+  border-left: 3px solid var(--gold);
+}
+.marquee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--navy-soft);
+  border-left-color: var(--gold);
+  color: var(--color-text);
+}
+.marquee-card-medium { border-left-color: #C9962B; opacity: 0.96; }
+.marquee-card-bad { border-left-color: var(--red); }
+.marquee-stars {
+  color: var(--gold);
+  font-size: 15px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.marquee-stars .dim { color: var(--color-border-dark, #D4D0C5); }
+.marquee-card-bad .marquee-stars { color: var(--red); }
+.marquee-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  margin-bottom: 16px;
+  min-height: 88px;
+}
+.marquee-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.marquee-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
 /* Responsive */
 @media (max-width: 1000px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
